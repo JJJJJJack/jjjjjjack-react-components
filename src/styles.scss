@@ -1,0 +1,223 @@
+@use "./vars.scss";
+@use "./base.scss";
+
+.jrc {
+  &-Button {
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: rgb(255 255 255 / 0);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: var(--button-bg);
+    color: #ffffff;
+
+    &[disabled] {
+      cursor: not-allowed;
+
+      &:hover {
+        filter: none;
+      }
+    }
+    &[data-no-text] {
+      padding-left: 0.25rem /* 4px */ !important;
+      padding-right: 0.25rem /* 4px */ !important;
+    }
+    &[data-small] {
+      padding-left: 0.75rem /* 12px */;
+      padding-right: 0.75rem /* 12px */;
+      padding-top: 0.25rem /* 4px */;
+      padding-bottom: 0.25rem /* 4px */;
+      font-size: 0.875rem /* 14px */;
+      line-height: 1.25rem /* 20px */;
+    }
+    &[data-variant="secondary"] {
+      border: 1px solid var(--border-primary);
+      background-color: transparent;
+      color: var(--text-primary);
+    }
+    &[data-variant="tertiary"] {
+      background-color: var(--button-bg-tertiary);
+      color: #ffffff;
+    }
+    &[data-variant="selected"] {
+      border-color: var(--border-active);
+    }
+    &[data-variant="warning"] {
+      background-color: var(--warning);
+    }
+    &[data-variant="danger"] {
+      background-color: var(--error);
+    }
+    &[data-variant="outline-only"] {
+      border: 1px solid var(--border-primary-highlight);
+      background-color: transparent;
+      color: var(--text-primary);
+    }
+    &[data-variant="transparent"] {
+      background-color: transparent;
+      color: var(--text-primary);
+    }
+  }
+
+  &-Buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-wrap: wrap;
+    // justify-content: flex-start; may be extra not needed
+
+    flex-wrap: wrap;
+    &[data-nowrap="true"] {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &-Card {
+    &__footer {
+      margin-top: 1rem;
+      justify-self: end;
+    }
+  }
+
+  &-CardTitle {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__Grid {
+      gap: 0.25rem !important;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    &__Subtitle {
+      opacity: 0.55;
+    }
+  }
+
+  &-Calendar {
+    // @import "react-datepicker/dist/react-datepicker.css";
+  }
+
+  &-DescribedCode {
+    > ::-webkit-scrollbar {
+      // TODO: check if needed
+      display: block;
+    }
+
+    &__Subtitle {
+      opacity: 0.5;
+    }
+
+    &__text {
+      overflow: auto;
+      white-space: pre;
+      text-align: justify;
+    }
+  }
+
+  &-Divider {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-color: var(--border-primary);
+
+    &[data-no-margin] {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+  &-Grid {
+    display: grid;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  &-Icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &__svg {
+      display: inline-block;
+    }
+  }
+
+  &-Label {
+    text-wrap: nowrap;
+    font-weight: 700;
+
+    &--span {
+      text-wrap: nowrap;
+      font-weight: 700;
+    }
+  }
+
+  &-Modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    border-style: none !important;
+
+    // background-image: linear-gradient(
+    //   to bottom right,
+    //   rgba(var(--bg-primary-rgb), 0.85),
+    //   rgba(var(--bg-tertiary-rgb), 0.85),
+    //   rgba(var(--bg-quaternary-rgb), 0.85)
+    // );
+
+    // backdrop-filter: blur(15px);
+    // -webkit-backdrop-filter: blur(15px);
+    // background-image: linear-gradient(
+    //   to top left,
+    //   rgba(var(--bg-primary-rgb), 0.5),
+    //   rgba(var(--bg-secondary-rgb), 0.5)
+    // );
+    // border: 1px solid var(--border-primary);
+
+    &__card-container {
+      width: 91.666667%;
+      transition-property: transform;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+      @media (min-width: 768px) {
+        width: 40%;
+      }
+      @media (min-width: 1280px) {
+        width: 33.333333%;
+      }
+    }
+  }
+
+  &-Subtitle {
+    place-self: start;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 300;
+  }
+}
+html.dark {
+  .jrc {
+    &-Button {
+      [data-small] {
+        color: var(--text-primary);
+      }
+
+      [data-variant="secondary"] {
+        background-color: rgba(var(--button-bg-secondary-rgb), 0.8);
+      }
+    }
+  }
+}
