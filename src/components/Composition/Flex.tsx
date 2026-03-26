@@ -1,13 +1,28 @@
 type FlexProps = {
   className?: string;
   col?: boolean;
-  justify?: "normal" | "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch";
-  items?: "start" | "end" | "center" | "baseline" | "stretch";
+  justify?:
+    | "normal"
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "stretch";
+  items?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
   children: any;
 };
 
-export function Flex({ className, col, justify = "normal", items = "start", children }: FlexProps) {
+export function Flex({ className, col, justify = "normal", items = "flex-start", children }: FlexProps) {
   return (
-    <div className={`flex ${col ? "flex-col" : ""} justify-${justify} items-${items} ${className}`}>{children}</div>
+    <div
+      className={`jrc-Flex justify-${justify} items-${items} ${className}`}
+      data-flex-col={col || undefined}
+      data-justify={justify}
+      data-items={items}
+    >
+      {children}
+    </div>
   );
 }

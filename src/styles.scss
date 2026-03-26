@@ -106,19 +106,19 @@
   }
 
   &-DescribedCode {
-    > ::-webkit-scrollbar {
-      // TODO: check if needed
-      display: block;
+    overflow: auto;
+    white-space: pre;
+    text-align: justify;
+
+    &__grid-container {
+      // > ::-webkit-scrollbar {
+      //   // TODO: check if needed
+      //   display: block;
+      // }
     }
 
     &__Subtitle {
       opacity: 0.5;
-    }
-
-    &__text {
-      overflow: auto;
-      white-space: pre;
-      text-align: justify;
     }
   }
 
@@ -130,6 +130,55 @@
     &[data-no-margin] {
       margin-top: 0px;
       margin-bottom: 0px;
+    }
+  }
+
+  &-Flex {
+    display: flex;
+
+    &[data-flex-col] {
+      flex-direction: column;
+    }
+
+    &[data-justify="normal"] {
+      justify-content: normal;
+    }
+    &[data-justify="flex-start"] {
+      justify-content: flex-start;
+    }
+    &[data-justify="flex-end"] {
+      justify-content: flex-end;
+    }
+    &[data-justify="center"] {
+      justify-content: center;
+    }
+    &[data-justify="space-between"] {
+      justify-content: space-between;
+    }
+    &[data-justify="space-around"] {
+      justify-content: space-around;
+    }
+    &[data-justify="space-evenly"] {
+      justify-content: space-evenly;
+    }
+    &[data-justify="stretch"] {
+      justify-content: stretch;
+    }
+
+    &[data-items="flex-start"] {
+      align-items: flex-start;
+    }
+    &[data-items="flex-end"] {
+      align-items: flex-end;
+    }
+    &[data-items="center"] {
+      align-items: center;
+    }
+    &[data-items="baseline"] {
+      align-items: baseline;
+    }
+    &[data-items="stretch"] {
+      align-items: stretch;
     }
   }
 
@@ -168,6 +217,8 @@
     }
 
     &:focus {
+      outline: none;
+      border: none; // TODO: may be extra
       border: 1px solid var(--border-primary);
     }
 
@@ -190,6 +241,15 @@
 
     &[type="password"] {
       padding-right: 2.5rem;
+    }
+    &[type="number"] {
+      -moz-appearance: textfield; /* Firefox */
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none; /* Chrome, Safari, Edge */
+        margin: 0;
+      }
     }
 
     &__Button-show-password {

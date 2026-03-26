@@ -30,8 +30,8 @@ export function Textarea({
       {label && <Label text={label} htmlFor={id} />}
       <div className="jrc-Textarea__grid-container">
         <textarea
-          disabled={disabled}
           className="jrc-Textarea"
+          disabled={disabled}
           rows={rows}
           placeholder={placeholder}
           value={value}
