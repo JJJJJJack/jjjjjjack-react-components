@@ -318,6 +318,36 @@
     }
   }
 
+  &-PageHeader {
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &__main-icon {
+      margin-right: 0.75rem;
+    }
+    &__icon {
+      margin-right: 0.5rem;
+    }
+
+    &__main-title {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+    &__title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    &__children-container {
+      position: sticky;
+      right: 0px;
+      background-color: var(--bg-primary);
+    }
+  }
+
   &-Subtitle {
     place-self: start;
     font-size: 0.75rem;

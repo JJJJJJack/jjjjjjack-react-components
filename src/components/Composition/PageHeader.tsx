@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Flex } from "./Flex";
 import { Icon } from "./Icon";
 
 type Props = {
@@ -10,13 +11,13 @@ type Props = {
 
 export function PageHeader({ icon, title, main = false, children }: Props) {
   return (
-    <section className="mb-6 mt-2 flex items-end justify-between">
-      <div className="flex items-center justify-start">
-        {icon && main && <Icon path={icon} className="mr-3" />}
-        {icon && !main && <Icon path={icon} className="mr-2" size="20" />}
-        <h1 className={`${main ? "text-3xl" : "text-2xl"}`}>{title}</h1>
-      </div>
-      <div className="sticky right-0 bg-[color:--bg-primary]">{children}</div>
+    <section className="jrc-PageHeader">
+      <Flex justify="flex-start" items="center">
+        {icon && main && <Icon path={icon} className="jrc-PageHeader__main-icon" />}
+        {icon && !main && <Icon path={icon} className="jrc-PageHeader__icon" size="20" />}
+        <h1 className={`${main ? "jrc-PageHeader__main-title" : "jrc-PageHeader__title"}`}>{title}</h1>
+      </Flex>
+      <div className="jrc-PageHeader__children-container">{children}</div>
     </section>
   );
 }
