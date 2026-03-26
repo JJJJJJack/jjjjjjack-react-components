@@ -28,17 +28,17 @@ export function Textarea({
   return (
     <Grid className={className}>
       {label && <Label text={label} htmlFor={id} />}
-      <div className="grid">
+      <div className="jrc-Textarea__grid-container">
         <textarea
           disabled={disabled}
-          className="resize-y p-2"
+          className="jrc-Textarea"
           rows={rows}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           id={id}
         />
-        {helperSubtitle && <span className="text-xs font-light">{helperSubtitle}</span>}
+        {helperSubtitle && <span className="jrc-Textarea__subtitle">{helperSubtitle}</span>}
       </div>
     </Grid>
   );

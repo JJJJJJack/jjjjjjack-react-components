@@ -73,11 +73,11 @@ export function Input({
   return (
     <Grid>
       {label && <Label text={label} htmlFor={id} />}
-      <div className="grid">
+      <div className="jrc-Input__grid-container">
         {type === "number" ? (
           <input
             disabled={disabled}
-            className={className}
+            className={`jrc-Input ${className}`}
             type={type}
             step={step}
             id={id}
@@ -128,10 +128,10 @@ export function Input({
           />
         ) : (
           <>
-            <div className="relative w-full">
+            <div className="jrc-Input__password-container">
               <input
                 disabled={disabled}
-                className={`${type === "password" ? "pr-10" : ""} w-full ${className}`}
+                className={`jrc-Input jrc-Input--password ${className}`}
                 type={type === "password" ? (showPassword ? "text" : "password") : type}
                 id={id}
                 placeholder={placeholder}
@@ -152,7 +152,7 @@ export function Input({
                 <Button
                   disabled={disabled}
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 transform cursor-pointer p-1"
+                  className="jrc-Input__Button-show-password"
                   icon={showPassword ? mdiEye : mdiEyeOff}
                   variant="transparent"
                   title={showPassword ? "Hide password" : "Show password"}

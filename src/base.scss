@@ -1,4 +1,11 @@
 .jrc {
+  &-a {
+    color: var(--link);
+    &:hover {
+      color: var(--link-hover);
+    }
+  }
+
   &-cardbox {
     border-radius: 1.5rem;
     padding: 1rem;
