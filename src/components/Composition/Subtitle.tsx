@@ -6,7 +6,7 @@ type SubtitleProps = {
 
 export function Subtitle({ disabled = undefined, className = "", text }: SubtitleProps) {
   return (
-    <span data-disabled={disabled} className={`jrc-Subtitle ${className}`}>
+    <span className={`jrc-Subtitle ${className}`} data-disabled={disabled}>
       {text === "" ? <>&nbsp;</> : text}
     </span>
   );

@@ -10,11 +10,11 @@ export function Label({
   text: any;
 }) {
   return htmlFor ? (
-    <label className={`jrc-Label ${className}`} data-disabled={disabled || undefined} htmlFor={htmlFor}>
+    <label className={`jrc-Label jrc-text-nowrap ${className}`} data-disabled={disabled || undefined} htmlFor={htmlFor}>
       {text}
     </label>
   ) : (
-    <span className={`jrc-Label--span ${className}`} data-disabled={disabled || undefined}>
+    <span className={`jrc-Label jrc-text-nowrap ${className}`} data-disabled={disabled || undefined}>
       {text}
     </span>
   );

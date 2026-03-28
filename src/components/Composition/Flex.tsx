@@ -14,14 +14,9 @@ type FlexProps = {
   children: any;
 };
 
-export function Flex({ className, col, justify = "normal", items = "flex-start", children }: FlexProps) {
+export function Flex({ className, col, justify, items, children }: FlexProps) {
   return (
-    <div
-      className={`jrc-Flex justify-${justify} items-${items} ${className}`}
-      data-flex-col={col || undefined}
-      data-justify={justify}
-      data-items={items}
-    >
+    <div className={`jrc-Flex ${className}`} data-flex-col={col || undefined} data-justify={justify} data-items={items}>
       {children}
     </div>
   );

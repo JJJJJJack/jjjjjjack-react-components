@@ -6,7 +6,7 @@ type AccordionProps = {
   children: any;
   onChange?: (open: boolean) => unknown;
 };
-export function Accordion({ title, children, onChange }: AccordionProps) {
+export function Accordion({ title, children, onChange = undefined }: AccordionProps) {
   const [open, setOpen] = useState(false);
   const contentHeight = useRef<HTMLDivElement>(null);
 
@@ -19,20 +19,25 @@ export function Accordion({ title, children, onChange }: AccordionProps) {
 
   return (
     <div
-      className="accordion-container cursor-pointer p-4"
+      className="jrc-Accordion"
       onClick={() => {
         setOpen(prev => !prev);
       }}
     >
-      <div className="wrapper cursor-default">
-        <button className={`question-container ${open ? "active" : ""}`}>
-          <p className="question-content">{title}</p>
-          <Icon className={`arrow ${open ? "active" : ""}`} path={dropDownArrow} size="20" viewBox={"0 0 20 20"} />
+      <div className="jrc-Accordion__content">
+        <button className={`jrc-Accordion__content-question-button`}>
+          <p className="jrc-Accordion__content-question-text">{title}</p>
+          <Icon
+            className={`jrc-Accordion__content-question-arrow ${open ? "active" : ""}`}
+            path={dropDownArrow}
+            size="20"
+            viewBox={"0 0 20 20"}
+          />
         </button>
 
         <div
           ref={contentHeight}
-          className="answer-container"
+          className="jrc-Accordion__content-answer-container"
           style={open ? { height: contentHeight?.current?.scrollHeight } : { height: "0px" }}
           onClick={e => {
             e.preventDefault();

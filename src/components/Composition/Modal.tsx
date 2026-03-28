@@ -69,11 +69,9 @@ export function Modal({
       <div className={"jrc-Modal__card-container"}>
         <Card className={className} footer={footer} noHighlight>
           <CardTitle title={title} subtitle={subtitle}>
-            {onCancel && (
-              <Button variant="transparent" icon={closeIcon ? closeIcon : mdiClose} onClick={onCancel} small />
-            )}
+            {onCancel && <Button variant="transparent" icon={mdiClose} onClick={onCancel} small />}
           </CardTitle>
-          <div className="max-h-[70vh]">{children}</div>
+          <div className="jrc-Modal__children-container">{children}</div>
         </Card>
       </div>
     </div>

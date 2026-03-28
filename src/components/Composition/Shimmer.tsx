@@ -14,8 +14,8 @@ export function Shimmer({ width = "100%", height = 20, borderRadius = 4, style =
   };
 
   return (
-    <div className="shimmer-wrapper" style={wrapperStyle}>
-      <div className="shimmer" />
+    <div className="jrc-Shimmer__wrapper" style={wrapperStyle}>
+      <div className="jrc-Shimmer" />
     </div>
   );
 }

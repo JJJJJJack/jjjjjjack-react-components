@@ -1,0 +1,123 @@
+.jrc-Table {
+  &__Card {
+    position: relative !important;
+    gap: 0px !important;
+    padding: 0px !important;
+
+    &--w-min {
+      width: min-content;
+    }
+  }
+
+  &__Flex {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+
+    &__search-bar {
+      width: 100%;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      background-color: transparent;
+
+      &:focus {
+        border-color: transparent;
+      }
+    }
+
+    &__Icon {
+      color: var(--text-secondary);
+      opacity: 0.5;
+    }
+  }
+
+  &__grid-container {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  &__overflow-container {
+    overflow-x: auto;
+  }
+
+  &table {
+    width: 100%;
+
+    thead {
+      background-color: rgba(var(--bg-quinary-rgb), 0.6);
+    }
+
+    th {
+      text-wrap: nowrap;
+      border-style: none;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    tr {
+      border-bottom-width: 1px;
+      border-color: var(--border-primary);
+
+      &:first-child:not(:last-child) {
+        border-top: 1px solid var(--border-primary);
+      }
+
+      td[data-buttons-cell] {
+        background-color: var(--bg-tertiary);
+      }
+    }
+
+    tbody tr:hover {
+      backdrop-filter: brightness(0.9);
+
+      td[data-buttons-cell] {
+        filter: brightness(0.9);
+      }
+    }
+
+    td {
+      padding-right: 1rem;
+      padding-left: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      width: max-content;
+
+      &:empty::after {
+        content: "N/A";
+        font-weight: 100;
+        color: var(--border-primary-highlight);
+      }
+
+      &:has(div:has(.select-wrapper__control)) {
+        min-width: max-content;
+        will-change: contents;
+      }
+
+      &[data-buttons-cell] {
+        position: sticky;
+        right: 0px;
+      }
+    }
+  }
+
+  &__non-buttons-header {
+    cursor: pointer;
+    vertical-align: middle;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__empty-data {
+    border-top-width: 1px;
+    border-color: var(--border-primary);
+    text-align: center;
+    font-weight: 100;
+    font-style: italic;
+    opacity: 0.5;
+  }
+}

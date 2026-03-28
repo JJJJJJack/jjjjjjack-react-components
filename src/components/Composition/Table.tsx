@@ -158,10 +158,10 @@ export function Table({
   };
 
   return (
-    <Card className={`!relative !gap-0 !p-0 ${wMin ? "w-min" : ""}`}>
-      <Flex className="px-2 pt-1" items="center">
+    <Card className={`jrc-Table__Card ${wMin ? "jrc-Table__Card--w-min" : ""}`}>
+      <Flex className="jrc-Table__Flex" items="center">
         <input
-          className="w-full rounded-t-2xl bg-transparent focus:border-transparent"
+          className="jrc-Table__Flex__search-bar"
           placeholder="Search"
           id={getTableElementKey("search")}
           type="text"
@@ -189,12 +189,12 @@ export function Table({
           }}
           style={(backendSearch ?? filterText) === "" ? { display: "none" } : undefined}
         >
-          <Icon className="text-[color:--text-secondary] hover:opacity-50" path={mdiClose} size={18} />
+          <Icon className="jrc-Table__Flex__Icon" path={mdiClose} size={18} />
         </span>
       </Flex>
-      <div className="grid gap-2">
-        <div className="overflow-x-auto">
-          <table className="w-full">
+      <div className="jrc-Table__grid-container">
+        <div className="jrc-Table__overflow-container jrc-show-scrollbar">
+          <table className="jrc-Table">
             {filteredData.length > 0 && (
               <thead>
                 <tr>
@@ -209,13 +209,15 @@ export function Table({
                       />
                     ) : (
                       <th
-                        className="cursor-pointer align-middle hover:opacity-60"
+                        className="jrc-Table__non-buttons-header"
                         onClick={onHeaderClick(key)}
                         key={getTableElementKey(`header-${key}`)}
                       >
                         {key}
                         <Icon
-                          className={keySort === undefined ? "opacity-0" : keySort.header !== key ? "opacity-0" : ""}
+                          className={
+                            keySort === undefined ? "jrc-opacity-0" : keySort.header !== key ? "jrc-opacity-0" : ""
+                          }
                           path={keySort?.order === 1 ? mdiChevronDown : mdiChevronUp}
                           viewBox={"0 0 18 18"}
                         />
@@ -244,10 +246,7 @@ export function Table({
                   ))
               ) : filteredData.length === 0 ? (
                 <tr>
-                  <td
-                    colSpan={Object.keys(filteredData[0] ?? {}).length}
-                    className="border-t-[1px] border-[color:var(--border-primary)] text-center font-thin italic opacity-50"
-                  >
+                  <td className="jrc-Table__empty-data" colSpan={Object.keys(filteredData[0] ?? {}).length}>
                     No results available
                   </td>
                 </tr>
@@ -258,7 +257,7 @@ export function Table({
                       // If this column should have max-width and ellipsis
                       if (maxWidthColumns[key]) {
                         return (
-                          <td className="text-nowrap" key={getTableElementKey(`${key}-value-${i}`)}>
+                          <td className="jrc-text-nowrap" key={getTableElementKey(`${key}-value-${i}`)}>
                             <div
                               style={{
                                 maxWidth: maxWidthColumns[key],
@@ -277,14 +276,14 @@ export function Table({
                       // Default rendering
                       if (key === BUTTONS_KEY) {
                         return (
-                          <td className="sticky right-0" data-buttons-cell key={getTableElementKey(`${key}-cell-${i}`)}>
+                          <td data-buttons-cell key={getTableElementKey(`${key}-cell-${i}`)}>
                             {value}
                           </td>
                         );
                       }
 
                       return (
-                        <td className="text-nowrap" key={getTableElementKey(`${key}-value-${i}`)}>
+                        <td className="jrc-text-nowrap" key={getTableElementKey(`${key}-value-${i}`)}>
                           {value}
                         </td>
                       );

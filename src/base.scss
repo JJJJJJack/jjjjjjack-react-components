@@ -12,7 +12,7 @@
     background-color: var(--bg-tertiary);
     border: 1px solid var(--border-primary);
 
-    table {
+    .jrc-cardbox table {
       background-color: var(--bg-tertiary);
 
       tbody tr {
@@ -86,23 +86,24 @@
     }
   }
 
-  &-shimmer-wrapper {
-    height: 100%;
-    width: 100%;
-    background-color: var(--bg-primary);
-    overflow: hidden;
-    border-radius: 4px;
-    position: relative;
-    animation: jrc-shimmerWrapper 1.5s infinite;
-    opacity: 30%;
+  &-hide-scrollbar {
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 
-  &-shimmer {
-    left: -150px;
-    height: 100%;
-    width: 150px;
-    background: linear-gradient(130deg, rgba(white, 0), rgba(white, 0.7), rgba(white, 0));
-    animation: jrc-shimmer 1.5s infinite;
+  &-show-scrollbar {
+    ::-webkit-scrollbar {
+      display: block;
+    }
+  }
+
+  &-opacity-0 {
+    opacity: 0;
+  }
+
+  &-text-nowrap {
+    text-wrap: nowrap;
   }
 }
 

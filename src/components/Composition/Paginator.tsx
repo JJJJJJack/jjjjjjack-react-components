@@ -39,13 +39,13 @@ export function Paginator({
   const endIndex = Math.min(currentPage * perPage, totalRows);
 
   return (
-    <div className="hide-scrollbar flex flex-col items-center justify-between gap-4 px-3 md:flex-row md:py-0">
-      <Buttons className="flex-nowrap !overflow-x-scroll">
+    <div className="jrc-Paginator jrc-hide-scrollbar">
+      <Buttons className="jrc-Paginator__Buttons">
         {isLessThan10 ? (
           pagesList.map(page => (
             <Button
               small
-              className="aspect-square !max-h-9 !min-w-9 justify-center !p-0 text-center"
+              className="jrc-Paginator__Button"
               variant={currentPage === page ? "tertiary" : "secondary"}
               text={page}
               disabled={page === currentPage}
@@ -57,8 +57,8 @@ export function Paginator({
           <>
             {pagesList.slice(0, isInTheMiddle ? 2 : 3).map(page => (
               <Button
+                className="jrc-Paginator__Button"
                 small
-                className="aspect-square !max-h-9 !min-w-9 justify-center !p-0 text-center"
                 variant={currentPage === page ? "tertiary" : "secondary"}
                 text={page}
                 disabled={page === currentPage}
@@ -76,7 +76,7 @@ export function Paginator({
                     isOverlapping(page) ? null : (
                       <Button
                         small
-                        className="sticky left-0 aspect-square !max-h-9 !min-w-9 justify-center !p-0 text-center"
+                        className="jrc-Paginator__Button jrc-Paginator__Button--in-the-middle-start"
                         variant={currentPage === page ? "tertiary" : "secondary"}
                         text={page}
                         disabled={page === currentPage}
@@ -94,7 +94,7 @@ export function Paginator({
             {pagesList.splice(isInTheMiddle ? -2 : -3).map(page => (
               <Button
                 small
-                className="sticky right-0 aspect-square !max-h-9 !min-w-9 justify-center !p-0 text-center"
+                className="jrc-Paginator__Button jrc-Paginator__Button--in-the-middle-end"
                 variant={currentPage === page ? "tertiary" : "secondary"}
                 text={page}
                 disabled={page === currentPage}
@@ -106,19 +106,19 @@ export function Paginator({
         )}
       </Buttons>
 
-      <Flex className="sticky right-0 gap-2" items="center">
-        <small className="mr-2 text-[color:var(--text-secondary)]">
+      <Flex className="jrc-Paginator__per-page-container" items="center">
+        <small className="jrc-Paginator__per-page-side-comment">
           {totalRows > 0 ? `Showing ${startIndex}-${endIndex} of ${totalRows} entries` : "No entries found"}
         </small>
         <Input
           type="number"
-          className="mr-2 max-h-8 w-[50px] rounded-md text-center"
+          className="jrc-Paginator__per-page-number"
           id={`paginator-per-page-input-${uniqueKey()}`}
           value={perPage}
           min={1}
           onChange={setPerPage}
         />
-        <small className="text-nowrap">per page</small>
+        <small className="jrc-Paginator__per-page-text jrc-text-nowrap">per page</small>
       </Flex>
     </div>
   );
