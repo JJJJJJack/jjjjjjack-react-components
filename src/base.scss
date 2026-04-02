@@ -1,6 +1,8 @@
 @use "vars.scss";
 
 @mixin clickable {
+  cursor: pointer;
+
   &:hover {
     filter: brightness(0.9);
   }
@@ -86,10 +88,6 @@
       rgba(var(--bg-secondary-rgb), 0.5)
     );
     border: 1px solid var(--border-primary);
-  }
-
-  &-clickable {
-    @include clickable;
   }
 
   &-hide-scrollbar {

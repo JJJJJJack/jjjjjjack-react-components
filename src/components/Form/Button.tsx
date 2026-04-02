@@ -53,7 +53,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`jrc-Button jrc-clickable ${className}`}
+      className={`jrc-Button ${className}`}
       type={formSubmit ? "submit" : "button"}
       disabled={disabled}
       onClick={e => {
