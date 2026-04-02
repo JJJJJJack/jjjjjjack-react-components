@@ -1,19 +1,24 @@
+import { uniqueKey } from "@/utils/utils";
 import React, { useEffect, useRef, useState } from "react";
 import { Grid } from "../Composition/Grid";
 import { UploadFile } from "./UploadFile";
 
 type UploadImageProps = {
   label?: string;
-  onChange: (file: File | null) => void;
   previewHeight?: number;
   name?: string;
+  inputId?: string;
+  mimeTypes: string[];
+  onChange: (file: File | null) => void;
 };
 
 export function UploadImage({
   label = "Choose Image",
-  onChange,
   previewHeight = 200,
   name = "image",
+  mimeTypes,
+  inputId = `image-upload-input-${uniqueKey()}`,
+  onChange,
 }: UploadImageProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [filename, setFilename] = useState<string>("");
@@ -22,7 +27,7 @@ export function UploadImage({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (!["image/png", "image/jpeg"].includes(file.type)) {
+    if (!mimeTypes.includes(file.type)) {
       e.target.value = "";
       return;
     }
@@ -44,7 +49,7 @@ export function UploadImage({
     e.preventDefault();
     e.stopPropagation();
     const file = e.dataTransfer.files[0];
-    if (file && ["image/png", "image/jpeg"].includes(file.type)) {
+    if (file && mimeTypes.includes(file.type)) {
       setFilename(file.name);
       setPreviewUrl(URL.createObjectURL(file));
       onChange(file);
@@ -63,7 +68,7 @@ export function UploadImage({
       for (const item of items) {
         if (item.kind === "file") {
           const file = item.getAsFile();
-          if (file && ["image/png", "image/jpeg"].includes(file.type)) {
+          if (file && mimeTypes.includes(file.type)) {
             setFilename(file.name);
             setPreviewUrl(URL.createObjectURL(file));
             onChange(file);
@@ -87,11 +92,11 @@ export function UploadImage({
       <Grid>
         <UploadFile
           label={label}
-          inputId="image-upload-input"
+          inputId={inputId}
           filename={filename}
           inputRef={inputRef}
           name={name}
-          accept={"image/png, image/jpeg"}
+          accept={mimeTypes.join(", ")}
           onChange={handleFileChange}
           onButtonClick={clearImage}
         />
@@ -99,7 +104,7 @@ export function UploadImage({
           <img
             src={previewUrl}
             alt="Selected image preview"
-            className="justify-self-center"
+            className="jrc-UploadImage__preview"
             style={{ maxHeight: `${previewHeight}px` }}
           />
         )}

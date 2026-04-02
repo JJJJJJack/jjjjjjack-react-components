@@ -1,3 +1,24 @@
+@use "vars.scss";
+
+@mixin clickable {
+  &:hover {
+    filter: brightness(0.9);
+  }
+  &:active {
+    filter: brightness(0.8);
+  }
+
+  &[data-variant="outline-only"],
+  &[data-variant="transparent"] {
+    &:hover {
+      backdrop-filter: brightness(var(--clickable-hover-backdrop-brightness));
+    }
+    &:active {
+      backdrop-filter: brightness(var(--clickable-active-backdrop-brightness));
+    }
+  }
+}
+
 .jrc {
   &-a {
     color: var(--link);
@@ -12,7 +33,7 @@
     background-color: var(--bg-tertiary);
     border: 1px solid var(--border-primary);
 
-    .jrc-cardbox table {
+    .jrc-cardbox .jrc-Table {
       background-color: var(--bg-tertiary);
 
       tbody tr {
@@ -68,22 +89,7 @@
   }
 
   &-clickable {
-    &:hover {
-      filter: brightness(0.9);
-    }
-    &:active {
-      filter: brightness(0.8);
-    }
-
-    &[data-variant="outline-only"],
-    &[data-variant="transparent"] {
-      &:hover {
-        backdrop-filter: brightness(var(--clickable-hover-backdrop-brightness));
-      }
-      &:active {
-        backdrop-filter: brightness(var(--clickable-active-backdrop-brightness));
-      }
-    }
+    @include clickable;
   }
 
   &-hide-scrollbar {

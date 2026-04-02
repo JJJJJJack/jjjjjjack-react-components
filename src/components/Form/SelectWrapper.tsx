@@ -148,8 +148,8 @@ export function SelectWrapper({
           isDisabled: disabled,
           closeMenuOnSelect,
           inputId: id,
-          classNamePrefix: "select-wrapper",
-          className: `select-wrapper-class ${className}`,
+          classNamePrefix: "jrc-SelectWrapper",
+          className: `jrc-SelectWrapper-class ${className}`,
         }}
         isClearable={isClearable}
         unstyled

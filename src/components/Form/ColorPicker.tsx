@@ -6,13 +6,13 @@ import { Input } from "./Input";
 export function ColorPicker({
   value,
   icon,
-  onChange,
   title = "Pick a color",
+  onChange,
 }: {
   value: string;
   icon?: string;
-  onChange: (color: string) => void;
   title?: string;
+  onChange: (color: string) => void;
 }) {
   const [open, setOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -44,16 +44,20 @@ export function ColorPicker({
   };
 
   return (
-    <div className="relative inline-block" ref={pickerRef}>
+    <div className="jrc-ColorPicker" ref={pickerRef}>
       <Button variant="tertiary" icon={icon as string} title={title} onClick={() => setOpen(o => !o)} />
 
       {open && (
-        <div className="absolute z-20 flex flex-col gap-2 rounded p-2">
-          <HexColorPicker color={hexInput} onChange={handleChange} />
+        <div className="jrc-ColorPicker__tooltip">
+          <HexColorPicker
+            className="jrc-ColorPicker__tooltip__HexColorPicker"
+            color={hexInput}
+            onChange={handleChange}
+          />
           <Input
+            className="jrc-ColorPicker__tooltip__Input"
             type="text"
             value={hexInput}
-            className="px-2 py-1 text-center text-sm"
             onChange={handleHexChange}
             placeholder="#rrggbb"
           />

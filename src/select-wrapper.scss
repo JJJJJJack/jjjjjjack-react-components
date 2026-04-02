@@ -1,0 +1,125 @@
+@use "vars.scss";
+@use "base.scss";
+
+.jrc {
+  &-SelectWrapper-class {
+    min-width: 0px;
+  }
+
+  /* Control (input box) */
+  &-SelectWrapper__control {
+    display: flex;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    background-color: var(--bg-quaternary);
+    transition: border-color 0.15s ease-in-out;
+
+    &:hover .jrc-SelectWrapper__indicator {
+      filter: brightness(1.2);
+    }
+  }
+
+  &-SelectWrapper__control--is-focused {
+    border: 1px solid var(--border-primary);
+  }
+
+  &-SelectWrapper__value-container {
+    gap: 0.25rem;
+  }
+
+  &-SelectWrapper__input-container input {
+    height: min-content;
+  }
+
+  /* Menu (dropdown) */
+  &-SelectWrapper__menu {
+    margin-top: 0;
+    border: 1px solid var(--border-primary);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--bg-quaternary);
+  }
+
+  /* Menu list */
+  &-SelectWrapper__menu-list {
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  /* Option */
+  &-SelectWrapper__option {
+    &:hover {
+      background-color: rgba(var(--bg-tertiary-rgb), 0.6);
+    }
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    background-color: var(--bg-quaternary);
+    transition: background-color 0.2s ease;
+  }
+
+  &-SelectWrapper__option--is-focused {
+    background-color: var(--bg-tertiary);
+  }
+
+  /* Selected option (after pressing Enter) */
+  &-SelectWrapper__option--is-selected {
+    background-color: var(--bg-quinary);
+  }
+
+  &-SelectWrapper__option:active {
+    background-color: var(--bg-border);
+  }
+
+  /* Multi value */
+  &-SelectWrapper__multi-value {
+    border: 1px solid var(--border-primary-highlight);
+    background-color: var(--bg-tertiary);
+    border-radius: 0.375rem;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &-SelectWrapper__multi-value__label {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  &-SelectWrapper__multi-value__remove {
+    @include base.clickable;
+    border-radius: 0.125rem;
+    background-color: var(--error);
+    color: white;
+  }
+
+  /* Placeholder */
+  &-SelectWrapper__placeholder {
+    color: var(--text-secondary);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* Dropdown indicator */
+  &-SelectWrapper__dropdown-indicator {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+  }
+
+  &-SelectWrapper__indicator-separator {
+    display: none;
+  }
+
+  /* Input */
+  &-SelectWrapper__input {
+    box-shadow: none;
+  }
+
+  &-SelectWrapper__single-value:empty::after {
+    content: "Select...";
+    color: var(--text-secondary);
+    font-weight: 100;
+  }
+}
