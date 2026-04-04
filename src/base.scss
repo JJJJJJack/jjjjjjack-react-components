@@ -1,25 +1,5 @@
 @use "vars.scss";
-
-@mixin clickable {
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.9);
-  }
-  &:active {
-    filter: brightness(0.8);
-  }
-
-  &[data-variant="outline-only"],
-  &[data-variant="transparent"] {
-    &:hover {
-      backdrop-filter: brightness(var(--clickable-hover-backdrop-brightness));
-    }
-    &:active {
-      backdrop-filter: brightness(var(--clickable-active-backdrop-brightness));
-    }
-  }
-}
+@use "mixins.scss";
 
 .jrc {
   &-a {
@@ -77,6 +57,10 @@
       rgba(var(--bg-tertiary-rgb), 0.85),
       rgba(var(--bg-quaternary-rgb), 0.85)
     );
+  }
+
+  &-clickable {
+    @include mixins.clickable;
   }
 
   &-glasscard {

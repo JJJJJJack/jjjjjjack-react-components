@@ -1,5 +1,5 @@
 @use "vars.scss";
-@use "base.scss";
+@use "mixins.scss";
 
 .jrc {
   &-SelectWrapper {
@@ -51,15 +51,12 @@
 
     /* Option */
     &__option {
+      @include mixins.clickable;
       padding: 0.5rem 0.75rem;
       cursor: pointer;
       background-color: var(--bg-quaternary);
-      transition: background-color 0.2s ease;
+      transition: background-color 0.1s ease;
       color: var(--text-primary);
-
-      &:hover {
-        background-color: rgba(var(--bg-tertiary-rgb), 0.6);
-      }
     }
 
     &__option--is-focused {
@@ -69,10 +66,6 @@
     /* Selected option (after pressing Enter) */
     &__option--is-selected {
       background-color: var(--bg-quinary);
-    }
-
-    &__option:active {
-      background-color: var(--bg-border);
     }
 
     /* Multi value */
@@ -92,7 +85,7 @@
     }
 
     &__multi-value__remove {
-      @include base.clickable;
+      @include mixins.clickable;
       border-radius: 0.125rem;
       background-color: var(--error);
       color: white;
