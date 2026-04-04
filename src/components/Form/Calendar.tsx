@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker"; // TODO: remove and recreate
-// ts-ignore
 import { Grid } from "../Composition/Grid";
 import { Label } from "./Label";
 
 interface DateCalendarProps {
-  idDate: string;
-  label: string;
+  idDate?: string;
   isRange?: boolean;
   showTime?: boolean;
+  placeholder?: string | { start?: string; end?: string };
+  label: string;
   value: { start: string; end?: string };
   onChange: (value: string | { start: string; end: string }) => void;
-  placeholder?: string | { start?: string; end?: string };
 }
 
 const testDate = new Date(Date.UTC(2025, 0, 2));
@@ -48,14 +47,16 @@ function getUserDateFormatPattern(): string {
     .join("");
 }
 
+// TODO: fix {start: string; end: string} with a better solution
+//  and fix rotating pages when selecting dates outside the current month (maybe?)
 export function Calendar({
-  idDate,
-  label,
   isRange = false,
   showTime = false,
+  idDate,
+  label,
+  placeholder,
   value,
   onChange,
-  placeholder,
 }: DateCalendarProps) {
   const parseDate = (dateString?: string | null): Date | null => {
     if (!dateString || dateString === "null") return null;
@@ -107,7 +108,7 @@ export function Calendar({
 
   return (
     <Grid className="jrc-Calendar">
-      {label && <Label text={label} htmlFor={isRange ? undefined : idDate} />}
+      {label && <Label text={label} htmlFor={idDate} />}
       <div>
         {isRange ? (
           <DatePicker
@@ -116,7 +117,7 @@ export function Calendar({
             endDate={range[1]}
             dateFormat={dateFormat}
             onChange={handleChangeRange}
-            className="datepicker-input"
+            className="jrc-Calendar__DatePicker"
             placeholderText={placeholderText}
             autoComplete="off"
           />
@@ -128,7 +129,7 @@ export function Calendar({
             timeIntervals={15}
             todayButton={showTime ? "Today" : undefined}
             dateFormat={dateFormat}
-            className="datepicker-input"
+            className="jrc-Calendar__DatePicker"
             placeholderText={placeholderText}
             id={idDate}
             autoComplete="off"
