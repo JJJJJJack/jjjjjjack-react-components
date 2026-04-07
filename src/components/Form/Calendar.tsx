@@ -4,7 +4,7 @@ import { Grid } from "../Composition/Grid";
 import { Label } from "./Label";
 
 interface DateCalendarProps {
-  idDate?: string;
+  idDate: string;
   isRange?: boolean;
   showTime?: boolean;
   placeholder?: string | { start?: string; end?: string };
@@ -107,8 +107,8 @@ export function Calendar({
     typeof placeholder === "string" ? placeholder : isRange ? "Select range date" : "Select a date";
 
   return (
-    <Grid className="jrc-Calendar">
-      {label && <Label text={label} htmlFor={idDate} />}
+    <Grid className="jrc-Calendar__grid-container">
+      {label && <Label text={label} htmlFor={isRange ? undefined : idDate} />}
       <div>
         {isRange ? (
           <DatePicker
