@@ -3,7 +3,6 @@ export type { Entries, Keys, Values } from "./types/utils.types";
 
 // Composition
 export { Card } from "./components/Composition/Card";
-export { CardTitle } from "./components/Composition/CardTitle";
 export { DescribedCode } from "./components/Composition/DescribedCode";
 export { Divider } from "./components/Composition/Divider";
 export { Flex } from "./components/Composition/Flex";
@@ -15,6 +14,7 @@ export { Paginator } from "./components/Composition/Paginator";
 export { Shimmer } from "./components/Composition/Shimmer";
 export { Subtitle } from "./components/Composition/Subtitle";
 export { Table } from "./components/Composition/Table";
+export { Title } from "./components/Composition/Title";
 
 // Form
 export { Accordion } from "./components/Form/Accordion";

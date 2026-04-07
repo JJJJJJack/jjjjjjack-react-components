@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useRef } from "react";
 import { Button } from "../Form/Button";
 import { Buttons } from "../Form/Buttons";
 import { Card } from "./Card";
-import { CardTitle } from "./CardTitle";
+import { Title } from "./Title";
 
 type ModalProps = {
   title?: string;
@@ -68,9 +68,9 @@ export function Modal({
     >
       <div className={"jrc-Modal__card-container"}>
         <Card className={className} footer={footer} noHighlight>
-          <CardTitle title={title} subtitle={subtitle}>
+          <Title text={title} subtitle={subtitle}>
             {onCancel && <Button variant="transparent" icon={mdiClose} onClick={onCancel} small />}
-          </CardTitle>
+          </Title>
           <div className="jrc-Modal__children-container">{children}</div>
         </Card>
       </div>
