@@ -1,4 +1,65 @@
 .jrc-Table {
+  width: 100%;
+
+  thead {
+    background-color: rgba(var(--bg-quinary-rgb), 0.6);
+  }
+
+  th {
+    text-wrap: nowrap;
+    border-style: none;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  tr {
+    border-bottom-width: 1px;
+    border-color: var(--border-primary);
+
+    &:first-child:not(:last-child) {
+      border-top: 1px solid var(--border-primary);
+    }
+
+    td[data-buttons-cell] {
+      background-color: var(--bg-tertiary);
+    }
+  }
+
+  tbody tr:hover {
+    backdrop-filter: brightness(0.9);
+
+    td[data-buttons-cell] {
+      filter: brightness(0.9);
+    }
+  }
+
+  td {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: max-content;
+
+    &:empty::after {
+      content: "N/A";
+      font-weight: 100;
+      color: var(--border-primary-highlight);
+    }
+
+    &:has(div:has(.jrc-SelectWrapper__control)) {
+      min-width: max-content;
+      will-change: contents;
+    }
+
+    &[data-buttons-cell] {
+      position: sticky;
+      right: 0px;
+    }
+  }
+
   &__Card {
     position: relative !important;
     gap: 0px !important;
@@ -38,69 +99,6 @@
 
   &__overflow-container {
     overflow-x: auto;
-  }
-
-  &table {
-    width: 100%;
-
-    thead {
-      background-color: rgba(var(--bg-quinary-rgb), 0.6);
-    }
-
-    th {
-      text-wrap: nowrap;
-      border-style: none;
-      padding-right: 1rem;
-      padding-left: 1rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      text-align: left;
-    }
-
-    tr {
-      border-bottom-width: 1px;
-      border-color: var(--border-primary);
-
-      &:first-child:not(:last-child) {
-        border-top: 1px solid var(--border-primary);
-      }
-
-      td[data-buttons-cell] {
-        background-color: var(--bg-tertiary);
-      }
-    }
-
-    tbody tr:hover {
-      backdrop-filter: brightness(0.9);
-
-      td[data-buttons-cell] {
-        filter: brightness(0.9);
-      }
-    }
-
-    td {
-      padding-right: 1rem;
-      padding-left: 1rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      width: max-content;
-
-      &:empty::after {
-        content: "N/A";
-        font-weight: 100;
-        color: var(--border-primary-highlight);
-      }
-
-      &:has(div:has(.jrc-SelectWrapper__control)) {
-        min-width: max-content;
-        will-change: contents;
-      }
-
-      &[data-buttons-cell] {
-        position: sticky;
-        right: 0px;
-      }
-    }
   }
 
   &__non-buttons-header {
