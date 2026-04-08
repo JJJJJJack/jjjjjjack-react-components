@@ -11,7 +11,7 @@ interface CheckboxProps {
 
 export function Checkbox({ disabled, id, checked, onChange, label }: CheckboxProps) {
   return (
-    <div className="jrc-Checkbox__container" data-disabled={disabled}>
+    <div className="jrc-Checkbox__container" data-disabled={disabled || undefined}>
       <input
         className="jrc-Checkbox"
         disabled={disabled}
