@@ -577,5 +577,12 @@ html.dark {
         background-color: rgba(var(--button-bg-secondary-rgb), 0.8);
       }
     }
+
+    &-Shimmer {
+      &__wrapper {
+        background-color: var(--bg-quinary);
+        animation: jrc-shimmerWrapperDark 1.5s infinite;
+      }
+    }
   }
 }
