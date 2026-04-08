@@ -11,7 +11,6 @@ type ModalProps = {
   subtitle?: string;
   confirmButtonLabel?: string;
   cancelButtonLabel?: string;
-  closeIcon?: string;
   children: ReactNode;
   onConfirm?: () => void;
   onCancel: () => void;
@@ -24,7 +23,6 @@ export function Modal({
   className,
   confirmButtonLabel = "Confirm",
   cancelButtonLabel = "Cancel",
-  closeIcon,
   onConfirm,
   onCancel,
 }: ModalProps) {
