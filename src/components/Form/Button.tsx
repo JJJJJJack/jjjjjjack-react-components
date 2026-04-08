@@ -9,9 +9,9 @@ interface BaseButtonCoreProps {
   title?: string;
   formSubmit?: boolean;
   children?: any;
-  customColor?: any;
   autoFocus?: boolean;
   tabIndex?: number;
+  style?: React.CSSProperties;
 }
 interface WithIcon {
   icon: string;
@@ -37,19 +37,19 @@ type ButtonProps =
 
 export function Button({
   className = "",
+  autoFocus,
   disabled,
+  small,
+  formSubmit,
   variant = "",
   text,
   icon,
-  small,
   iconSize = 18,
   title = "",
-  formSubmit,
-  onClick = () => {},
-  children,
-  customColor,
-  autoFocus,
   tabIndex,
+  style,
+  children,
+  onClick = () => {},
 }: ButtonProps) {
   return (
     <button
@@ -68,7 +68,7 @@ export function Button({
       data-no-text={!text ? "" : undefined}
       data-small={small}
       data-variant={variant}
-      style={customColor ? { backgroundColor: customColor, borderColor: customColor } : undefined}
+      style={style}
     >
       {icon && <Icon path={icon} size={iconSize} />}
       {text}

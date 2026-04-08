@@ -1,6 +1,7 @@
 import { mdiChevronDown, mdiChevronUp, mdiClose } from "@mdi/js";
 import { isValidElement, useCallback, useEffect, useMemo, useState } from "react";
 import { uniqueKey } from "../../utils/utils";
+import { Button } from "../Form/Button";
 import { Card } from "./Card";
 import { Flex } from "./Flex";
 import { Icon } from "./Icon";
@@ -178,7 +179,12 @@ export function Table({
             setFilterText(e.target.value);
           }}
         />
-        <span
+        <Button
+          small
+          variant="transparent"
+          className="jrc-Table__Flex__Icon"
+          icon={mdiClose}
+          iconSize={18}
           onClick={() => {
             if (onBackendSearch) {
               onBackendSearch("");
@@ -188,9 +194,7 @@ export function Table({
             setFilterText("");
           }}
           style={(backendSearch ?? filterText) === "" ? { display: "none" } : undefined}
-        >
-          <Icon className="jrc-Table__Flex__Icon" path={mdiClose} size={18} />
-        </span>
+        />
       </Flex>
       <div className="jrc-Table__grid-container">
         <div className="jrc-Table__overflow-container jrc-show-scrollbar">
