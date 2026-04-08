@@ -123,8 +123,9 @@
     align-items: center;
     gap: 0.5rem;
     text-wrap: wrap;
-    // justify-content: flex-start; may be extra not needed
+    // justify-content: flex-start; // may be extra not needed
     flex-wrap: wrap;
+    width: fit-content;
 
     &[data-nowrap="true"] {
       flex-wrap: nowrap;
