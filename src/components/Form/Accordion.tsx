@@ -40,7 +40,6 @@ export function Accordion({ title, children, onChange = undefined }: AccordionPr
           className="jrc-Accordion__content-answer-container"
           style={open ? { height: contentHeight?.current?.scrollHeight } : { height: "0px" }}
           onClick={e => {
-            e.preventDefault();
             e.stopPropagation();
           }}
         >
