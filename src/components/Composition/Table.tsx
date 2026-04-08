@@ -235,19 +235,20 @@ export function Table({
               {loading ? (
                 Array(perPage)
                   .fill(0)
-                  .map((_, i) => (
-                    <tr key={getTableElementKey(`shimmer${i}`)}>
-                      <td>
-                        <Shimmer />
-                      </td>
-                      <td>
-                        <Shimmer />
-                      </td>
-                      <td>
-                        <Shimmer />
-                      </td>
-                    </tr>
-                  ))
+                  .map((_, i) => {
+                    const rowKey = `shimmer-tr-${i}`;
+                    return (
+                      <tr key={rowKey}>
+                        {Array(Object.keys(filteredData[0] ?? {}).length)
+                          .fill(0)
+                          .map((_, j) => (
+                            <td key={`${rowKey}-td-${j}`}>
+                              <Shimmer />
+                            </td>
+                          ))}
+                      </tr>
+                    );
+                  })
               ) : filteredData.length === 0 ? (
                 <tr>
                   <td className="jrc-Table__empty-data" colSpan={Object.keys(filteredData[0] ?? {}).length}>
