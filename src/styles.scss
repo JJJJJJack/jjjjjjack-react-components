@@ -215,9 +215,13 @@
 
   &-Flex {
     display: flex;
-
     &[data-flex-col] {
       flex-direction: column;
+    }
+
+    gap: 0.5rem;
+    &[data-no-gap] {
+      gap: 0px;
     }
 
     &[data-justify="normal"] {

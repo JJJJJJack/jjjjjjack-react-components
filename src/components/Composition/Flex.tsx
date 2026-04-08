@@ -1,6 +1,7 @@
 type FlexProps = {
   className?: string;
   col?: boolean;
+  noGap?: boolean;
   justify?:
     | "normal"
     | "flex-start"
@@ -14,9 +15,15 @@ type FlexProps = {
   children: any;
 };
 
-export function Flex({ className, col, justify, items, children }: FlexProps) {
+export function Flex({ className, col, noGap, justify, items, children }: FlexProps) {
   return (
-    <div className={`jrc-Flex ${className}`} data-flex-col={col || undefined} data-justify={justify} data-items={items}>
+    <div
+      className={`jrc-Flex ${className}`}
+      data-no-gap={noGap || undefined}
+      data-flex-col={col || undefined}
+      data-justify={justify}
+      data-items={items}
+    >
       {children}
     </div>
   );
