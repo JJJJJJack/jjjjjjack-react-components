@@ -124,8 +124,8 @@
     gap: 0.5rem;
     text-wrap: wrap;
     // justify-content: flex-start; may be extra not needed
-
     flex-wrap: wrap;
+
     &[data-nowrap="true"] {
       flex-wrap: nowrap;
     }
@@ -215,11 +215,12 @@
 
   &-Flex {
     display: flex;
+    gap: 0.5rem;
+
     &[data-flex-col] {
       flex-direction: column;
     }
 
-    gap: 0.5rem;
     &[data-no-gap] {
       gap: 0px;
     }
