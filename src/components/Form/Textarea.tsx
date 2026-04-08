@@ -15,7 +15,7 @@ interface TextareaProps {
 }
 
 export function Textarea({
-  className,
+  className = "",
   id,
   label,
   helperSubtitle,

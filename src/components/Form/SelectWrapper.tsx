@@ -30,6 +30,7 @@ interface SelectWrapperMultiProps extends CommonProps {
   onChange: (newValue: SelectOption[], actionMeta: ActionMeta<any>) => any;
 }
 export function SelectWrapper({
+  className = "",
   options,
   value,
   defaultValue,
@@ -42,7 +43,6 @@ export function SelectWrapper({
   closeMenuOnSelect,
   id,
   label,
-  className,
   isClearable,
 }: SelectWrapperSingleProps | SelectWrapperMultiProps) {
   const [inputValue, setInputValue] = useState("");

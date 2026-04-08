@@ -15,7 +15,7 @@ type FlexProps = {
   children: any;
 };
 
-export function Flex({ className, col, noGap, justify, items, children }: FlexProps) {
+export function Flex({ className = "", col, noGap, justify, items, children }: FlexProps) {
   return (
     <div
       className={`jrc-Flex ${className}`}

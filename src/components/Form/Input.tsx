@@ -46,7 +46,7 @@ interface NumberInputProps extends BaseInputProps {
 }
 
 export function Input({
-  className,
+  className = "",
   disabled,
   type,
   step,

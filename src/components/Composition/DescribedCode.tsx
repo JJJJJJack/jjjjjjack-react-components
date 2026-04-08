@@ -8,7 +8,7 @@ type DescribedCodeProps = {
   children?: React.ReactNode;
 };
 
-export function DescribedCode({ className, subtitle, text, children }: DescribedCodeProps) {
+export function DescribedCode({ className = "", subtitle, text, children }: DescribedCodeProps) {
   return (
     <Grid className={`jrc-DescribedCode__grid-container ${className}`}>
       <Subtitle className="jrc-DescribedCode__Subtitle" text={subtitle} />

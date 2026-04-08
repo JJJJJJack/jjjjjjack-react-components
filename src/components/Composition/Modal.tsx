@@ -20,7 +20,7 @@ export function Modal({
   title,
   subtitle,
   children,
-  className,
+  className = "",
   confirmButtonLabel = "Confirm",
   cancelButtonLabel = "Cancel",
   onConfirm,

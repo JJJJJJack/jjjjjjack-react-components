@@ -9,7 +9,7 @@ type Props = {
   children: any;
 };
 
-export function Buttons({ noWrap = false, children, className, label, containerClassname }: Props) {
+export function Buttons({ className = "", noWrap = false, children, label, containerClassname }: Props) {
   return (
     <Grid className={containerClassname}>
       {label && <Label text={label} />}
