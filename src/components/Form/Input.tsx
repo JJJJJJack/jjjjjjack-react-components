@@ -19,7 +19,7 @@ interface BaseInputProps {
 }
 
 interface InputProps extends BaseInputProps {
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
   step?: undefined;
   min?: undefined;
   max?: undefined;
@@ -48,7 +48,7 @@ interface NumberInputProps extends BaseInputProps {
 export function Input({
   className = "",
   disabled,
-  type,
+  type = "text",
   step,
   id,
   label,
@@ -73,7 +73,7 @@ export function Input({
   return (
     <Grid>
       {label && <Label text={label} htmlFor={id} />}
-      <div className="jrc-Input__grid-container">
+      <div className="jrc-Input__container">
         {type === "number" ? (
           <input
             disabled={disabled}
@@ -86,6 +86,7 @@ export function Input({
             accept={accept}
             autoFocus={autoFocus}
             name={name}
+            data-type={type}
             onChange={e => {
               const val = e.target.value;
               setNumberPreview(val);
@@ -128,38 +129,37 @@ export function Input({
           />
         ) : (
           <>
-            <div className="jrc-Input__password-container">
-              <input
+            <input
+              disabled={disabled}
+              className={`jrc-Input ${className}`}
+              type={type === "password" ? (showPassword ? "text" : "password") : type}
+              id={id}
+              placeholder={placeholder}
+              value={value}
+              accept={accept}
+              autoFocus={autoFocus}
+              name={name}
+              data-type={type}
+              onChange={onChange}
+              onKeyDown={e => {
+                switch (e.key) {
+                  case "Enter":
+                    onEnter?.(e);
+                    break;
+                }
+              }}
+            />
+            {type === "password" && (
+              <Button
+                className="jrc-Input__Button-show-password"
                 disabled={disabled}
-                className={`jrc-Input ${className}`}
-                type={type === "password" ? (showPassword ? "text" : "password") : type}
-                id={id}
-                placeholder={placeholder}
-                value={value}
-                accept={accept}
-                autoFocus={autoFocus}
-                name={name}
-                onChange={onChange}
-                onKeyDown={e => {
-                  switch (e.key) {
-                    case "Enter":
-                      onEnter?.(e);
-                      break;
-                  }
-                }}
+                onClick={() => setShowPassword(!showPassword)}
+                icon={showPassword ? mdiEye : mdiEyeOff}
+                variant="transparent"
+                title={showPassword ? "Hide password" : "Show password"}
+                tabIndex={-1}
               />
-              {type === "password" && (
-                <Button
-                  disabled={disabled}
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="jrc-Input__Button-show-password"
-                  icon={showPassword ? mdiEye : mdiEyeOff}
-                  variant="transparent"
-                  title={showPassword ? "Hide password" : "Show password"}
-                  tabIndex={-1}
-                />
-              )}
-            </div>
+            )}
             {(helperSubtitle || helperSubtitle === "") && <Subtitle disabled={disabled} text={helperSubtitle} />}
           </>
         )}
