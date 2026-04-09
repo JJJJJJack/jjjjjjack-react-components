@@ -174,7 +174,13 @@
       border-radius: 0.25rem;
       padding: 0.5rem;
 
-      &__Input {
+      &__HexColorPicker.react-colorful {
+        @include mixins.shadow;
+        width: 100%;
+      }
+
+      &__Input.jrc-Input {
+        @include mixins.shadow;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         padding-top: 0.25rem;
@@ -182,6 +188,7 @@
         text-align: center;
         font-size: 0.875rem;
         line-height: 1.25rem;
+        border: 1px solid var(--border-primary);
       }
     }
   }
@@ -320,7 +327,8 @@
     );
     border: 1px solid var(--border-primary);
 
-    &__card-container {
+    &__Card {
+      @include mixins.shadow;
       width: 91.666667%;
       transition-property: transform;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

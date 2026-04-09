@@ -131,7 +131,7 @@ export function Input({
             <div className="jrc-Input__password-container">
               <input
                 disabled={disabled}
-                className={`jrc-Input jrc-Input--password ${className}`}
+                className={`jrc-Input ${className}`}
                 type={type === "password" ? (showPassword ? "text" : "password") : type}
                 id={id}
                 placeholder={placeholder}

@@ -243,7 +243,7 @@ export function Table({
                           .fill(0)
                           .map((_, j) => (
                             <td key={`${rowKey}-td-${j}`}>
-                              <Shimmer />
+                              <Shimmer width={"60%"} />
                             </td>
                           ))}
                       </tr>

@@ -10,6 +10,7 @@ export function ColorPicker({
   onChange,
 }: {
   value: string;
+  text?: string;
   icon?: string;
   title?: string;
   onChange: (color: string) => void;

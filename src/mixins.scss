@@ -54,11 +54,8 @@
     width: 100%;
   }
 
-  &--password {
-    width: 100%;
-  }
-
   &[type="password"] {
+    width: 100%;
     padding-right: 2.5rem;
   }
   &[type="number"] {
@@ -83,4 +80,8 @@
     cursor: pointer;
     padding: 0.25rem;
   }
+}
+
+@mixin shadow {
+  box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.7);
 }
