@@ -6,8 +6,8 @@
     .react-datepicker,
     .react-datepicker__time-container,
     .react-datepicker__time-list {
+      @include mixins.shadow;
       background-color: var(--bg-secondary);
-      box-shadow: 0 2px 8px var(--bg-secondary);
       border: none;
     }
 
