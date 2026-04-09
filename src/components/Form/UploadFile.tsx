@@ -16,6 +16,7 @@ type UploadFileProps = {
   onDeleteClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
+/** TODO: add drop over funcionality and interface effects */
 export function UploadFile({
   label,
   inputId,
