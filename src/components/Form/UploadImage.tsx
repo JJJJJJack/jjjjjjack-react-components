@@ -98,7 +98,7 @@ export function UploadImage({
           name={name}
           accept={mimeTypes.join(", ")}
           onChange={handleFileChange}
-          onButtonClick={clearImage}
+          onDeleteClick={clearImage}
         />
         {previewUrl && (
           <img
