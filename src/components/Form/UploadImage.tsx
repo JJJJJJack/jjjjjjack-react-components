@@ -8,15 +8,27 @@ type UploadImageProps = {
   previewHeight?: number;
   name?: string;
   inputId?: string;
-  mimeTypes: string[];
+  accept: string;
   onChange: (file: File | null) => void;
 };
+
+function matchesMimeType(fileType: string, accept: string): boolean {
+  const patterns = accept.split(",").map(s => s.trim());
+  return patterns.some(pattern => {
+    if (pattern === fileType) return true;
+    if (pattern.endsWith("/*")) {
+      const category = pattern.slice(0, -2);
+      return fileType.startsWith(`${category}/`);
+    }
+    return false;
+  });
+}
 
 export function UploadImage({
   label = "Choose Image",
   previewHeight = 200,
   name = "image",
-  mimeTypes,
+  accept,
   inputId = `image-upload-input-${uniqueKey()}`,
   onChange,
 }: UploadImageProps) {
@@ -24,17 +36,20 @@ export function UploadImage({
   const [filename, setFilename] = useState<string>("");
   const [previewUrl, setPreviewUrl] = useState<string>();
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (!mimeTypes.includes(file.type)) {
-      e.target.value = "";
-      return;
-    }
-
+  const applyFile = (file: File) => {
     setFilename(file.name);
     setPreviewUrl(URL.createObjectURL(file));
     onChange(file);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!matchesMimeType(file.type, accept)) {
+      e.target.value = "";
+      return;
+    }
+    applyFile(file);
   };
 
   const clearImage = (e?: React.MouseEvent) => {
@@ -49,10 +64,8 @@ export function UploadImage({
     e.preventDefault();
     e.stopPropagation();
     const file = e.dataTransfer.files[0];
-    if (file && mimeTypes.includes(file.type)) {
-      setFilename(file.name);
-      setPreviewUrl(URL.createObjectURL(file));
-      onChange(file);
+    if (file && matchesMimeType(file.type, accept)) {
+      applyFile(file);
     }
   };
 
@@ -64,14 +77,11 @@ export function UploadImage({
     const handlePaste = (e: ClipboardEvent) => {
       const items = e.clipboardData?.items;
       if (!items) return;
-
       for (const item of items) {
         if (item.kind === "file") {
           const file = item.getAsFile();
-          if (file && mimeTypes.includes(file.type)) {
-            setFilename(file.name);
-            setPreviewUrl(URL.createObjectURL(file));
-            onChange(file);
+          if (file && matchesMimeType(file.type, accept)) {
+            applyFile(file);
           }
         }
       }
@@ -79,7 +89,7 @@ export function UploadImage({
 
     document.addEventListener("paste", handlePaste);
     return () => document.removeEventListener("paste", handlePaste);
-  }, [onChange]);
+  }, [onChange, accept]);
 
   useEffect(() => {
     return () => {
@@ -96,7 +106,7 @@ export function UploadImage({
           filename={filename}
           inputRef={inputRef}
           name={name}
-          accept={mimeTypes.join(", ")}
+          accept={accept}
           onChange={handleFileChange}
           onDeleteClick={clearImage}
         />

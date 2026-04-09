@@ -47,7 +47,7 @@ export function UploadFile({
           id={inputId}
           onChange={e => {
             onChange(e);
-            setOriginalFilename(e.target.files?.[0].name);
+            setOriginalFilename(e.target.files?.[0]?.name);
           }}
           onClick={e => {
             (e.target as HTMLInputElement).value = "";
