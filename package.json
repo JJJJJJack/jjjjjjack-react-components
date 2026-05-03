@@ -1,7 +1,7 @@
 {
   "name": "@jjjjjjack/react-components",
   "description": "Not intended for SSR. Takes away the boilerplates of usual and expected html elements behaviours. The styles are toggable and replaceable.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "style": "dist/styles.css",
   "exports": {
