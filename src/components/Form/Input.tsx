@@ -7,6 +7,7 @@ import { Label } from "./Label";
 
 interface BaseInputProps {
   id?: string;
+  readOnly?: boolean;
   className?: string;
   label?: string;
   helperSubtitle?: string;
@@ -48,6 +49,7 @@ interface NumberInputProps extends BaseInputProps {
 export function Input({
   className = "",
   disabled,
+  readOnly,
   type = "text",
   step,
   id,
@@ -76,8 +78,9 @@ export function Input({
       <div className="jrc-Input__container">
         {type === "number" ? (
           <input
-            disabled={disabled}
             className={`jrc-Input ${className}`}
+            disabled={disabled}
+            readOnly={readOnly}
             type={type}
             step={step}
             id={id}
@@ -130,8 +133,9 @@ export function Input({
         ) : (
           <>
             <input
-              disabled={disabled}
               className={`jrc-Input ${className}`}
+              disabled={disabled}
+              readOnly={readOnly}
               type={type === "password" ? (showPassword ? "text" : "password") : type}
               id={id}
               placeholder={placeholder}

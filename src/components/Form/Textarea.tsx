@@ -3,6 +3,7 @@ import { Grid } from "../Composition/Grid";
 import { Label } from "./Label";
 
 interface TextareaProps {
+  readOnly?: boolean;
   id?: string;
   className?: string;
   label?: string;
@@ -16,6 +17,7 @@ interface TextareaProps {
 
 export function Textarea({
   className = "",
+  readOnly,
   id,
   label,
   helperSubtitle,
@@ -32,6 +34,7 @@ export function Textarea({
         <textarea
           className="jrc-Textarea"
           disabled={disabled}
+          readOnly={readOnly}
           rows={rows}
           placeholder={placeholder}
           value={value}
